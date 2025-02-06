@@ -1,0 +1,42 @@
+{% extends "accounts/base.html" %}
+{% block main_heading %}TachyonByte CTF 2024{% endblock main_heading %}
+{% block main_content %}
+{% load crispy_forms_tags %}
+<div class="container overflow-auto">
+    <div class="row justify-content-center my-5">
+        <div class="col-8 col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0">Player Registration</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{form.ticket_id|as_crispy_field}}
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md">{{form.first_name|as_crispy_field}}</div>
+                            <div class="col-md">{{form.last_name|as_crispy_field}}</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md">{{form.mobile|as_crispy_field}}</div>
+                            <div class="col-md">{{form.email|as_crispy_field}}</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md">{{form.occupation|as_crispy_field}}</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md">{{form.password1|as_crispy_field}}</div>
+                            <div class="col-md">{{form.password2|as_crispy_field}}</div>
+                        </div>
+                        <div class="text-end">
+                            <input class="btn btn-primary" type="submit" value="Sign Up">
+                        </div>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main_content %}

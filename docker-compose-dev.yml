@@ -1,0 +1,20 @@
+services:
+ app:
+  depends_on:
+   - redis
+  build:
+   context: .
+   dockerfile: Dockerfile.dev
+  ports:
+   - "8089:8089"
+   - "8000:8000"
+  volumes:
+   - .:/app
+  command: sh -c "python ./ctf/manage.py makemigrations &&
+      python ./ctf/manage.py migrate &&
+      python ./ctf/manage.py init_admin &&
+      python ./ctf/manage.py collectstatic --noinput &&
+      python ./ctf/manage.py runserver 0.0.0.0:8089"
+
+ redis:
+  image: redis:alpine

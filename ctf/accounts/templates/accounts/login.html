@@ -1,0 +1,26 @@
+{% extends "accounts/base.html" %}
+{% block main_heading %}TachyonByte CTF 2024{% endblock main_heading %}
+{% block main_content %}
+{% load crispy_forms_tags %}
+<div class="container">
+    <div class="row justify-content-center my-5">
+        <div class="col-8 col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0">Player Login</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <div class="text-end">
+                            <a href="{% url 'accounts:signup' %}" class="btn btn-dark">Register</a>
+                            <input class="btn btn-primary" type="submit" value="Login">
+                        </div>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main_content %}

@@ -1,0 +1,25 @@
+services:
+  app:
+    depends_on:
+      - redis
+    image: tachyonbyte/leaderboard:latest
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app
+      - sqlite-db:/app/ctf/ctf/
+    networks:
+      - leaderboard-network
+
+  redis:
+    image: redis:alpine
+    networks:
+      - leaderboard-network
+
+volumes:
+  sqlite-db:
+    driver: local
+
+networks:
+  leaderboard-network:
+

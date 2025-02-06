@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+  
+    <title>TachyonByte CTF</title>
+   
+    <style>
+      .heading {
+          font-family: Montserrat;
+          font-size: 45px;
+          color: green;
+      }
+      input{
+        margin-top: 12px !important; margin-bottom: 12px !important;
+      }
+      #footer {
+        position: absolute;
+        bottom:0;
+        left: 0;
+        width: 100%;
+      }
+    </style>
+    <link rel="shortcut icon" href="{% static 'desk/assets/images/favicon.ico' %}"/>
+    <link href="{% static 'desk/layout/assets/css/ltr/all.min.css' %}" id="stylesheet" rel="stylesheet" type="text/css"/>
+
+    <script src="{% static 'desk/assets/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+      <!-- Google Fonts -->
+      <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet"/>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet"/>
+    </head>
+    {% block head_block %}
+    {% endblock %}
+
+  </head>
+
+  <body>
+    <!-- Main navbar -->
+    <div class="navbar navbar-dark navbar-expand-lg navbar-static border-bottom border-bottom-white border-opacity-10">
+      <div class="container-fluid">
+        <div class="d-flex d-lg-none me-2">
+          <button type="button" class="navbar-toggler sidebar-mobile-main-toggle rounded-pill">
+            <i class="ph-list"></i>
+          </button>
+        </div>
+        <div class="navbar-brand flex-1 flex-lg-0">
+          <a href="{% url 'desk:home' %}" class="d-inline-flex align-items-center">
+            <h3 style="text-decoration:none;color:white;" class="m-1">{% block main_heading %}TachyonByte CTF 2024{% endblock main_heading %}</h3>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- /main navbar -->
+
+    <!-- Page content -->
+    <div class="page-content">
+
+      <!-- Main content -->
+      <div class="content-wrapper">
+        <!-- Inner content -->
+        {% block main_content %}
+        <h1>Empty Block!</h1>
+        <h3>Please add content</h3>
+        {% endblock %}
+        <!-- Footer -->
+        <div class="navbar navbar-sm navbar-footer border-top" id="footer">
+          <div class="container-fluid">
+            <span
+              >&copy; 2024
+              TachyonByte CTF</span
+            >
+
+            <ul class="nav credits pb-sm-0 pb-1">
+              <span
+                >Made with <i class="fas fa-heart zoom redheart"></i> by
+                <a href="https://tachyonbyte.com" target="_blank">
+                  TachyonByte
+                </a>
+              </span>
+            </ul>
+          </div>
+        </div>
+        <!-- /footer -->
+        <!-- /inner content -->
+      </div>
+      <!-- /main content -->
+    </div>
+    <!-- /page content -->
+
+
+  </body>
+</html>

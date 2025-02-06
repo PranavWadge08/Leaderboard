@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'desk/assets/css/leaderboard.css' %}">
+    <title>Leaderboard | Tachyonbyte CTF</title>
+    <link rel="shortcut icon" href="{% static 'desk/assets/images/favicon.ico' %}"/>
+  </head>
+  <body>
+    <!-- particles.js container --> <div id="particles-js"></div>
+     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
+    <div id="message-box"></div>
+    <div class="main-logo-container">
+      <img src="{% static 'desk/assets/images/ctf-tb.jpg' %}" alt="Tachyonbyte TechFest 2024 Image">
+    </div>
+      <main>
+        <div id="header">
+          <h1>CTF Ranking</h1>
+        </div>
+        <div id="leaderboard">
+          <div class="ribbon"></div>
+          <table>
+  
+          </table>
+        </div>
+      </main>
+    <audio src="{% static 'desk/assets/sounds/update-tone.mp3' %}" id="update-audio"></audio>
+    <script src="{% static 'desk/js/leaderboard.js' %}"></script>
+  </body>
+</html>

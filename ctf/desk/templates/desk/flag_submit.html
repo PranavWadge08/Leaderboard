@@ -1,0 +1,39 @@
+{% extends "desk/base.html" %}
+{% block main_content %}
+{% load crispy_forms_tags %}
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center my-5">
+        <div>
+            {% if messages %}
+                {% for message in messages %}
+                    <div {% if message.tags %}class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            {% for item in form.non_field_errors  %}
+            <div class="alert alert-danger">
+                {{item}}
+            </div>
+            {% endfor %}
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0 pe-5 me-5">Submit CTF Flag</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group my-2">
+                            {{form.challenge|as_crispy_field}}
+                        </div>
+                        <div class="form-group my-2 mt-4">
+                            {{form.flag|as_crispy_field}}
+                        </div>
+                        <div class="text-end m-0">
+                            <button class="btn btn-primary m-0 mt-3" id="flag-submit-btn">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main_content %}

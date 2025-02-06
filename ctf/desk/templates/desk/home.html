@@ -1,0 +1,38 @@
+{% extends "desk/base.html" %}
+{% block main_content %}
+<div class="container overflow-auto">
+    <div class="row mb-5 mt-3">
+        <div class="col-md-4">
+            <a href="{% url 'desk:submit_flag' %}" class="text-muted">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="my-3"><i class="ph ph-flag" style="font-size: larger;"></i></h2>
+                        <h3>Submit Flag</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'desk:score' %}" class="text-muted">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="my-3"><i class="ph ph-number-square-nine" style="font-size: larger;"></i></h2>
+                        <h3>Score</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'desk:leaderboard' %}" class="text-muted" target="_blank">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="my-3"><i class="ph ph-trophy" style="font-size: larger;"></i></h2>
+                        <h3>Leaderboard</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock main_content %}

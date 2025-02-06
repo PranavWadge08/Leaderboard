@@ -1,0 +1,52 @@
+{% extends "desk/base.html" %}
+{% block main_content %}
+<div class="container-fluid overflow-auto px-4">
+    <div class="row justify-content-end mt-5">
+        <div class="col-6 col-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <p>Flags Submitted</p>
+                    <h2>
+                        <i class="ph ph-flag fs-1 me-2"></i> <span class="text-primary">{{totals.done}}</span> <span class="fs-6">/ {{totals.challenges}}</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <p>Your Score</p>
+                    <h2>
+                        <i class="ph ph-number-square-nine fs-1 me-2"></i> <span class="text-success">{{totals.score}}</span> <span class="fs-6">/ {{totals.points}}</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row my-5">
+        <h2>Challenges</h2>
+        {% for item in challenges %}
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-1">
+                            <h3>{{item.name}}</h3>
+                            <p>Points: <span class="fs-4">{{item.points}}</span></p>
+                        </div>
+                        <div>
+                            {% if item.is_done %}
+                            <i class="ph ph-check-square fs-1 text-success"></i>
+                            {% else %}
+                            <a href="{% url 'desk:submit_flag' %}?challenge={{item.id}}" class="btn btn-primary btn-sm">Submit Flag</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock main_content %}

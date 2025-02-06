@@ -1,0 +1,399 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+  
+    <title>Dashboard | TachyonByte CTF</title>
+    <link rel="shortcut icon" href="{% static 'desk/assets/images/favicon.ico' %}"/>
+    <style>
+      *{font-family: monospace !important;}
+      #footer {position: absolute;bottom:0;left: 0;width: 100%;}
+    </style>
+    <link href="{% static 'desk/assets/icons/phosphor/styles.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'desk/layout/assets/css/ltr/all.min.css' %}" id="stylesheet" rel="stylesheet" type="text/css" />
+    <script src="{% static 'desk/layout/assets/js/app.js' %}"></script>
+
+    <script src="{% static 'desk/assets/demo/demo_configurator.js' %}"></script>
+    <script src="{% static 'desk/assets/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    {% block head_block %}
+    {% endblock %}
+
+  </head>
+
+  <body>
+    <!-- Main navbar -->
+    <div
+      class="navbar navbar-dark navbar-expand-lg navbar-static border-bottom border-bottom-white border-opacity-10"
+    >
+      <div class="container-fluid">
+        <div class="d-flex d-lg-none me-2">
+          <button
+            type="button"
+            class="navbar-toggler sidebar-mobile-main-toggle rounded-pill"
+          >
+            <i class="ph-list"></i>
+          </button>
+        </div>
+
+        <div class="navbar-brand flex-1 flex-lg-0">
+          <a href="{% url 'desk:home' %}" class="d-inline-flex align-items-center">
+            <h3 style="text-decoration:none;color:white;" class="m-1">TachyonByte CTF 2024</h3>
+          </a>
+        </div>
+        <ul class="nav flex-row justify-content-end order-1 order-lg-2">
+          <li class="nav-item nav-item-dropdown-lg dropdown ms-lg-2">
+            <a
+              href="#"
+              class="navbar-nav-link align-items-center btn border p-1"
+              data-bs-toggle="dropdown">
+              <span class="d-none d-lg-inline-block mx-lg-2">{{request.user.first_name}} {{request.user.last_name}}</span>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-end">
+            <form action="{% url 'accounts:logout' %}" method="post" class="dropdown-item m-0 p-0">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-secondary w-100 bg-transparent border-0 m-0 text-muted"><i class="ph-sign-out me-2"></i> Logout</button>
+            </form>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- /main navbar -->
+
+    <!-- Page content -->
+    <div class="page-content">
+      <!-- Main sidebar -->
+      <div class="sidebar sidebar-dark sidebar-main sidebar-expand-lg">
+        <!-- Sidebar content -->
+        <div class="sidebar-content">
+          <!-- Sidebar header -->
+          <div class="sidebar-section">
+            <div class="sidebar-section-body d-flex justify-content-center">
+              <h5 class="sidebar-resize-hide flex-grow-1 my-auto">
+                Navigation
+              </h5>
+              <div>
+                <button type="button"
+                  class="btn btn-flat-white btn-icon btn-sm rounded-pill border-transparent sidebar-control sidebar-main-resize d-none d-lg-inline-flex">
+                  <i class="ph-arrows-left-right"></i>
+                </button>
+                <button type="button"
+                  class="btn btn-flat-white btn-icon btn-sm rounded-pill border-transparent sidebar-mobile-main-toggle d-lg-none">
+                  <i class="ph-x"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- /sidebar header -->
+
+          <!-- Main navigation -->
+          <div class="sidebar-section">
+            <ul class="nav nav-sidebar" data-nav-type="accordion">
+              <!-- Main -->
+              <li class="nav-item">
+                <a href="{% url 'desk:home' %}" class="nav-link">
+                  <i class="ph-house"></i>
+                  <span>
+                    Home
+                  </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'desk:submit_flag' %}" class="nav-link">
+                  <i class="ph-flag"></i>
+                  <span>
+                    Submit Flag
+                  </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'desk:score' %}" class="nav-link">
+                  <i class="ph-number-square-nine"></i>
+                  <span>
+                    Score
+                  </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'desk:leaderboard' %}" class="nav-link" target="_blank">
+                  <i class="ph-trophy"></i>
+                  <span>
+                    Leaderboard
+                  </span>
+                </a>
+              </li>
+              <!-- /Tools -->
+            </ul>
+          </div>
+          <!-- /main navigation -->
+        </div>
+        <!-- /sidebar content -->
+      </div>
+      <!-- /main sidebar -->
+
+      <!-- Main content -->
+      <div class="content-wrapper">
+        <!-- Inner content -->
+        {% block main_content %}
+        <h1>Empty Block!</h1>
+        <h3>Please add content</h3>
+        {% endblock %}
+        <!-- Footer -->
+        <div class="navbar navbar-sm navbar-footer border-top" id="footer">
+          <div class="container-fluid">
+            <span
+              >&copy; 2024
+              TachyonByte CTF</span
+            >
+
+            <ul class="nav credits pb-sm-0 pb-1">
+              <span
+                >Made with <i class="ph ph-heart"></i> by
+                <a href="https://tachyonbyte.com" target="_blank">
+                  TachyonByte
+                </a>
+              </span>
+            </ul>
+          </div>
+        </div>
+        <!-- /footer -->
+        <!-- /inner content -->
+      </div>
+      <!-- /main content -->
+    </div>
+    <!-- /page content -->
+
+    <!-- Theme Config -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="demo_config">
+      <div class="position-absolute top-50 end-100 visible">
+        <button
+          type="button"
+          class="btn btn-yellow btn-icon translate-middle-y rounded-end-0"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#demo_config"
+        >
+          <i class="ph-sun"></i>
+        </button>
+      </div>
+
+      <div class="offcanvas-header border-bottom py-0">
+        <h5 class="offcanvas-title py-3">Theme configuration</h5>
+        <button
+          type="button"
+          class="btn btn-light btn-sm btn-icon border-transparent rounded-pill"
+          data-bs-dismiss="offcanvas"
+        >
+          <i class="ph-x"></i>
+        </button>
+      </div>
+
+      <div class="offcanvas-body">
+        <div class="fw-semibold mb-2">Color mode</div>
+        <div class="list-group mb-3">
+          <label
+            class="list-group-item list-group-item-action form-check border-width-1 rounded mb-2"
+          >
+            <div class="d-flex flex-fill my-1">
+              <div class="form-check-label d-flex me-2">
+                <i class="ph-sun ph-lg me-3"></i>
+                <div>
+                  <span class="fw-bold">Light theme</span>
+                  <div class="fs-sm text-muted">
+                    Set light theme or reset to default
+                  </div>
+                </div>
+              </div>
+              <input
+                type="radio"
+                class="form-check-input cursor-pointer ms-auto"
+                name="main-theme"
+                value="light"
+                checked
+              />
+            </div>
+          </label>
+
+          <label
+            class="list-group-item list-group-item-action form-check border-width-1 rounded mb-2"
+          >
+            <div class="d-flex flex-fill my-1">
+              <div class="form-check-label d-flex me-2">
+                <i class="ph-moon ph-lg me-3"></i>
+                <div>
+                  <span class="fw-bold">Dark theme</span>
+                  <div class="fs-sm text-muted">Switch to dark theme</div>
+                </div>
+              </div>
+              <input
+                type="radio"
+                class="form-check-input cursor-pointer ms-auto"
+                name="main-theme"
+                value="dark"
+              />
+            </div>
+          </label>
+
+          <label
+            class="list-group-item list-group-item-action form-check border-width-1 rounded mb-0"
+          >
+            <div class="d-flex flex-fill my-1">
+              <div class="form-check-label d-flex me-2">
+                <i class="ph-translate ph-lg me-3"></i>
+                <div>
+                  <span class="fw-bold">Auto theme</span>
+                  <div class="fs-sm text-muted">
+                    Set theme based on system mode
+                  </div>
+                </div>
+              </div>
+              <input
+                type="radio"
+                class="form-check-input cursor-pointer ms-auto"
+                name="main-theme"
+                value="auto"
+              />
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div class="text-center pt-2 px-0">
+        <div class="mb-2">
+          <svg
+            width="200"
+            height="200"
+            viewBox="0 0 682 682"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            data-v-5f7fe0d0=""
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M340.771 639.454C509.596 639.454 646.454 502.596 646.454 333.771C646.454 164.948 509.596 28.0893 340.771 28.0893C171.948 28.0893 35.0893 164.948 35.0893 333.771C35.0893 502.596 171.948 639.454 340.771 639.454ZM340.771 645.543C512.957 645.543 652.543 505.957 652.543 333.771C652.543 161.585 512.957 22 340.771 22C168.585 22 29 161.585 29 333.771C29 505.957 168.585 645.543 340.771 645.543Z"
+              fill="#AEDDFF"
+            ></path>
+            <circle r="16" fill="rgb(0, 128, 255">
+              <animateMotion
+                dur="10s"
+                repeatCount="indefinite"
+                path="M340.771 639.454C509.596 639.454 646.454 502.596 646.454 333.771C646.454 164.948 509.596 28.0893 340.771 28.0893C171.948 28.0893 35.0893 164.948 35.0893 333.771C35.0893 502.596 171.948 639.454 340.771 639.454ZM340.771 645.543C512.957 645.543 652.543 505.957 652.543 333.771C652.543 161.585 512.957 22 340.771 22C168.585 22 29 161.585 29 333.771C29 505.957 168.585 645.543 340.771 645.543Z"
+              ></animateMotion>
+            </circle>
+            <circle r="16" fill="#1697F6">
+              <animateMotion
+                dur="15s"
+                repeatCount="indefinite"
+                path="M340.771 639.454C509.596 639.454 646.454 502.596 646.454 333.771C646.454 164.948 509.596 28.0893 340.771 28.0893C171.948 28.0893 35.0893 164.948 35.0893 333.771C35.0893 502.596 171.948 639.454 340.771 639.454ZM340.771 645.543C512.957 645.543 652.543 505.957 652.543 333.771C652.543 161.585 512.957 22 340.771 22C168.585 22 29 161.585 29 333.771C29 505.957 168.585 645.543 340.771 645.543Z"
+              ></animateMotion>
+            </circle>
+            <circle r="16" fill="rgb(37, 204, 247)">
+              <animateMotion
+                dur="20s"
+                repeatCount="indefinite"
+                path="M340.771 639.454C509.596 639.454 646.454 502.596 646.454 333.771C646.454 164.948 509.596 28.0893 340.771 28.0893C171.948 28.0893 35.0893 164.948 35.0893 333.771C35.0893 502.596 171.948 639.454 340.771 639.454ZM340.771 645.543C512.957 645.543 652.543 505.957 652.543 333.771C652.543 161.585 512.957 22 340.771 22C168.585 22 29 161.585 29 333.771C29 505.957 168.585 645.543 340.771 645.543Z"
+              ></animateMotion>
+            </circle>
+            <circle r="16" fill="rgb(37, 204, 247)">
+              <animateMotion
+                dur="7s"
+                repeatCount="indefinite"
+                path="M340.771 639.454C509.596 639.454 646.454 502.596 646.454 333.771C646.454 164.948 509.596 28.0893 340.771 28.0893C171.948 28.0893 35.0893 164.948 35.0893 333.771C35.0893 502.596 171.948 639.454 340.771 639.454ZM340.771 645.543C512.957 645.543 652.543 505.957 652.543 333.771C652.543 161.585 512.957 22 340.771 22C168.585 22 29 161.585 29 333.771C29 505.957 168.585 645.543 340.771 645.543Z"
+              ></animateMotion>
+            </circle>
+            <circle r="16" fill="#1697F6">
+              <animateMotion
+                dur="5s"
+                repeatCount="indefinite"
+                path="M340.771 639.454C509.596 639.454 646.454 502.596 646.454 333.771C646.454 164.948 509.596 28.0893 340.771 28.0893C171.948 28.0893 35.0893 164.948 35.0893 333.771C35.0893 502.596 171.948 639.454 340.771 639.454ZM340.771 645.543C512.957 645.543 652.543 505.957 652.543 333.771C652.543 161.585 512.957 22 340.771 22C168.585 22 29 161.585 29 333.771C29 505.957 168.585 645.543 340.771 645.543Z"
+                keyPoints="1;0"
+                keyTimes="0;1"
+              ></animateMotion>
+            </circle>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1080 1080"
+              height="650px"
+            >
+              <title>TachyonByte</title>
+              <g id="Layer_2" data-name="Layer 2">
+                <g id="Layer_1-2" data-name="Layer 1">
+                  <g id="WhiteBgSymbol">
+                    <rect width="1080" height="1080" rx="540" ry="540"></rect>
+                    <g>
+                      <g>
+                        <path
+                          d="M625.73,230h0a14.14,14.14,0,0,0-23.66,6.34L564.9,375.19h0L428,411.91l-.42-.11a20.49,20.49,0,0,0-25,14.25,21.21,21.21,0,0,0-2.27,8.46h0L362.18,576.6h0L225.4,613.28A14.15,14.15,0,0,0,219.06,637h0c9.52,9.53,28,14.47,41,11l111.78-30h0l7.87,7.88h0c8.49-5.71,18-10.12,25.76-16.73a63.6,63.6,0,0,1,10-7.5h0l-12.66-12.67h0l36.44-136.11h0l140-37.53h0l98.94,99h0l-37.5,140.05h0l-136,36.47h0L458,644.16h0a14.5,14.5,0,0,1-1.68,1.43c-3,5-8.89,8.44-14.52,11.08a122.56,122.56,0,0,0-19.45,11.84h0l44.92,45h0A21.15,21.15,0,0,0,492,738.07h0a21,21,0,0,0,28.41-1.21l.24-.24a21,21,0,0,0,4.78-7.42h0l128.18-34.37h0l96.3,96.36c7.67,7.68,20,9,28.57,2.34a21.24,21.24,0,0,0,2-31.78l-98.31-98.38h0l38-141.76h0a23.39,23.39,0,0,0-5.83-31.17L606.76,382.86h0l30-111.85C640.19,258,635.25,239.54,625.73,230Z"
+                          style="fill: #0080ff"
+                        ></path>
+                        <circle
+                          cx="218.38"
+                          cy="639.26"
+                          r="35.74"
+                          style="fill: #25ccf7"
+                        ></circle>
+                        <circle
+                          cx="416.91"
+                          cy="432.79"
+                          r="35.74"
+                          style="fill: #25ccf7"
+                        ></circle>
+                        <circle
+                          cx="774.26"
+                          cy="790.15"
+                          r="35.74"
+                          style="fill: #25ccf7"
+                        ></circle>
+                        <circle
+                          cx="623.38"
+                          cy="226.32"
+                          r="35.74"
+                          style="fill: #25ccf7"
+                        ></circle>
+                        <circle
+                          cx="702.79"
+                          cy="512.21"
+                          r="35.74"
+                          style="fill: #25ccf7"
+                        ></circle>
+                        <circle
+                          cx="496.32"
+                          cy="710.74"
+                          r="35.74"
+                          style="fill: #25ccf7"
+                        ></circle>
+                      </g>
+                      <path
+                        d="M430.74,604.09a21.85,21.85,0,0,0-16.83,18.71l-.45,3.37,10.32,3,.43-5A11.37,11.37,0,0,1,429,616a13,13,0,0,1,7.82-2.17,11.95,11.95,0,0,1,10.47,15.2,13,13,0,0,1-4.82,6.54,11.32,11.32,0,0,1-9.29,1.61l-28.68-8a22.24,22.24,0,1,0,16.91,24.55l.45-3.41-10.32-2.93-.44,5a11.32,11.32,0,0,1-4.81,8.11,12.91,12.91,0,0,1-7.82,2.18A12,12,0,0,1,388,647.54a13,13,0,0,1,4.81-6.54,11.36,11.36,0,0,1,9.3-1.62l28.68,8a22.23,22.23,0,1,0-.08-43.26Z"
+                        style="fill: #25ccf7"
+                      ></path>
+                      <g>
+                        <polygon
+                          points="541.1 473.67 498.61 567.21 532.6 572.88 541.1 635.24 583.59 541.7 549.6 536.03 541.1 473.67"
+                          style="fill: #0080ff"
+                        ></polygon>
+                        <polygon
+                          points="541.1 473.67 498.61 567.21 546.76 510.52 541.1 473.67"
+                          style="fill: #25ccf7"
+                        ></polygon>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </svg>
+        </div>
+        <footer class="border-top w-100">Made with <i class="ph ph-heart"></i> by<a href="https://tachyonbyte.com" target="_blank"> TachyonByte </a>Technologies Private Limited</footer>
+      </div>
+    </div>
+    <!-- /Theme Config -->
+  </body>
+</html>
